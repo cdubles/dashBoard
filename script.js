@@ -26,6 +26,15 @@ function windowResized() {
 function draw() {
   background("#243626");
   for (let i = 0; i < dots.length; i++) {
+
+    dots.forEach((element) => {
+      let dis = dist(dots[i].x, dots[i].y, element.x, element.y);
+      if (dis < 100) {
+        stroke("#3d5c40");
+        line(dots[i].x, dots[i].y, element.x, element.y);
+      }
+    });
+
     noStroke();
     fill("#27b334");
     ellipse(dots[i].x, dots[i].y, dots[i].size);
@@ -35,13 +44,7 @@ function draw() {
     dots[i].x += dots[i].xSpeed;
     dots[i].y += dots[i].ySpeed;
 
-    dots.forEach((element) => {
-      let dis = dist(dots[i].x, dots[i].y, element.x, element.y);
-      if (dis < 100) {
-        stroke("#3d5c40");
-        line(dots[i].x, dots[i].y, element.x, element.y);
-      }
-    });
+    
   }
 }
 //background code end
